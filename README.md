@@ -10,6 +10,14 @@
 <div align="center">
   <h3>🏫 Comprehensive Academic Management Solution 🏫</h3>
   <p><em>Streamlining Educational Administration with Modern Technology</em></p>
+  
+  <!-- Repository Stats -->
+  <p>
+    <img src="https://img.shields.io/github/languages/top/Kawchar-Ahammed/EduVault_Student_Management_System?style=flat-square&color=orange" alt="Top Language">
+    <img src="https://img.shields.io/github/repo-size/Kawchar-Ahammed/EduVault_Student_Management_System?style=flat-square&color=blue" alt="Repo Size">
+    <img src="https://img.shields.io/github/last-commit/Kawchar-Ahammed/EduVault_Student_Management_System?style=flat-square&color=green" alt="Last Commit">
+    <img src="https://img.shields.io/github/issues/Kawchar-Ahammed/EduVault_Student_Management_System?style=flat-square&color=red" alt="Issues">
+  </p>
 </div>
 
 ## 🌟 Project Overview
@@ -29,6 +37,10 @@ This system addresses real-world challenges in academic administration by provid
 - **Automated Processes** - Reduces manual work through automated grade calculations and notifications
 - **Role-Based Access** - Secure access control ensuring data privacy and appropriate permissions
 - **Scalable Architecture** - MVC design pattern allows for easy maintenance and feature expansion
+
+## 🏷️ Repository Topics
+
+This project covers: `java` `javafx` `academic-management` `student-management` `education` `desktop-application` `sql-server` `mvc-architecture` `grade-management` `attendance-tracking` `university-system` `school-management` `education-technology` `database-application`
 
 ## 🚀 Quick Start
 
