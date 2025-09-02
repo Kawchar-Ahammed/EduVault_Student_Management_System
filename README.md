@@ -1,9 +1,16 @@
 # 🎓 EduVault Academic Management System
 
-[![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
-[![JavaFX](https://img.shields.io/badge/JavaFX-19+-blue.svg)](https://openjfx.io/)
-[![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-red.svg)](https://www.microsoft.com/sql-server)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![JavaFX](https://img.shields.io/badge/JavaFX-19%2B-blue?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjfx.io/)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-2019%2B-red?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/Kawchar-Ahammed/EduVault_Student_Management_System?style=for-the-badge&logo=github)](https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Kawchar-Ahammed/EduVault_Student_Management_System?style=for-the-badge&logo=github)](https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System/network/members)
+
+<div align="center">
+  <h3>🏫 Comprehensive Academic Management Solution 🏫</h3>
+  <p><em>Streamlining Educational Administration with Modern Technology</em></p>
+</div>
 
 ## 🌟 Project Overview
 
@@ -22,6 +29,27 @@ This system addresses real-world challenges in academic administration by provid
 - **Automated Processes** - Reduces manual work through automated grade calculations and notifications
 - **Role-Based Access** - Secure access control ensuring data privacy and appropriate permissions
 - **Scalable Architecture** - MVC design pattern allows for easy maintenance and feature expansion
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System.git
+
+# Navigate to project directory
+cd EduVault_Student_Management_System
+
+# Compile the project
+javac -cp "lib/*" -d bin src/**/*.java
+
+# Run the application
+java -cp "bin;lib/*" applications.Main
+```
+
+**Default Login Credentials:**
+- **Admin**: `admin` / `admin123`
+- **Faculty**: `faculty` / `faculty123`  
+- **Student**: `student` / `student123`
 
 ## 📋 Table of Contents
 - [Features](#-key-features)
@@ -809,6 +837,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 *Last updated: September 2025*
 
 </div>
-#   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m  
- #   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m  
+#   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m 
+ 
+ #   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m 
+ 
  
