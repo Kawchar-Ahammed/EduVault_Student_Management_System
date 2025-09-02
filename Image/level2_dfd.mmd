@@ -1,0 +1,71 @@
+flowchart TB
+    %% External Entities
+    Faculty[👨‍🏫 Faculty]
+    Student[👨‍🎓 Student]
+    EmailSys[📧 Email System]
+
+    %% Level 2 Processes for Grade Management (Process 4.0)
+    P41((4.1<br/>Enter<br/>Assessment<br/>Grades))
+    P42((4.2<br/>Calculate<br/>Weighted<br/>Grades))
+    P43((4.3<br/>Generate<br/>Grade<br/>Reports))
+    P44((4.4<br/>Publish<br/>Final<br/>Grades))
+    P45((4.5<br/>Send Grade<br/>Notifications))
+
+    %% Data Stores
+    D4[(D4: Courses)]
+    D5[(D5: Assessments)]
+    D2[(D2: Students)]
+    D6[(D6: Enrollments)]
+
+    %% Faculty Input Flows
+    Faculty -.->|"Quiz Marks"| P41
+    Faculty -.->|"Assignment Marks"| P41
+    Faculty -.->|"Midterm Marks"| P41
+    Faculty -.->|"Final Exam Marks"| P41
+    Faculty -.->|"Publish Request"| P44
+
+    %% Process Internal Flows
+    P41 -.->|"Raw Assessment Data"| P42
+    P42 -.->|"Calculated Grades"| P43
+    P43 -.->|"Grade Reports"| P44
+    P44 -.->|"Published Grades"| P45
+
+    %% Data Store Interactions
+    P41 <-.->|"Assessment Records"| D5
+    P41 <-.->|"Course Information"| D4
+    P41 <-.->|"Enrolled Students"| D6
+
+    P42 <-.->|"Assessment Weights"| D5
+    P42 <-.->|"Course Grading Policy"| D4
+    P42 <-.->|"Student Records"| D2
+
+    P43 <-.->|"Grade History"| D5
+    P43 <-.->|"Student Details"| D2
+    P43 <-.->|"Course Details"| D4
+
+    P44 <-.->|"Final Grades"| D5
+    P44 <-.->|"Student Status"| D2
+
+    P45 <-.->|"Notification Log"| D5
+    P45 <-.->|"Student Contacts"| D2
+
+    %% Output Flows
+    P43 -.->|"Individual Grade Report"| Student
+    P43 -.->|"Class Grade Summary"| Faculty
+    P44 -.->|"Grade Confirmation"| Faculty
+    P45 -.->|"Grade Notification Email"| EmailSys
+
+    %% Student Query Flows
+    Student -.->|"Grade Inquiry"| P43
+    P43 -.->|"Current Grades"| Student
+
+    %% Styling
+    classDef processBox fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    classDef entityBox fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef dataStore fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef emailBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+
+    class P41,P42,P43,P44,P45 processBox
+    class Faculty,Student entityBox
+    class D2,D4,D5,D6 dataStore
+    class EmailSys emailBox

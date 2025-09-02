@@ -1,0 +1,203 @@
+/* Faculty Dashboard CSS */
+
+/* Root styles */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Header styles */
+.header {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 15px;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.welcome-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Button styles */
+.button {
+    -fx-background-radius: 3px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+}
+
+.logout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.success-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+}
+
+.success-button:hover {
+    -fx-background-color: #219955;
+}
+
+.purple-button {
+    -fx-background-color: #9b59b6;
+    -fx-text-fill: white;
+}
+
+.purple-button:hover {
+    -fx-background-color: #8e44ad;
+}
+
+.gray-button {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+}
+
+.gray-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Tab styles */
+.tab-pane {
+    -fx-tab-min-width: 120px;
+}
+
+.tab {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 5px 10px;
+}
+
+.tab:selected {
+    -fx-background-color: #3498db;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 5px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: #eee;
+    -fx-padding: 5px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #d6eaf8;
+    -fx-text-fill: black;
+}
+
+/* ComboBox styles */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #3498db;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 5px 10px;
+}
+
+/* TextField styles */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3px;
+    -fx-padding: 8px;
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+}
+
+/* Card styles */
+.card {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 20px;
+    -fx-background-radius: 10px;
+}
+
+.card-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.card-value {
+    -fx-font-size: 24px;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Footer styles */
+.footer {
+    -fx-background-color: #34495e;
+    -fx-padding: 10px;
+}
+
+.footer-text {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* Note styles */
+.note-text {
+    -fx-font-style: italic;
+    -fx-text-fill: #7f8c8d;
+}
+
+/* Section title styles */
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

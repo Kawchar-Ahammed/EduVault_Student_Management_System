@@ -1,0 +1,292 @@
+classDiagram
+    %% Core Application Classes
+    class Main {
+        +main(String[] args) void
+        +start(Stage primaryStage) void
+        -initializeDatabase() void
+        -loadConfiguration() void
+    }
+
+    %% Model Classes
+    class User {
+        -int userId
+        -String username
+        -String passwordHash
+        -String email
+        -String fullName
+        -String roleName
+        -boolean isActive
+        -DateTime createdDate
+        -DateTime lastLogin
+        +User(String username, String email, String fullName, String roleName)
+        +validateCredentials(String password) boolean
+        +updateLastLogin() void
+        +isAdmin() boolean
+        +isFaculty() boolean
+        +isStudent() boolean
+    }
+
+    class Student {
+        -String studentId
+        -int userId
+        -String fullName
+        -String email
+        -String phone
+        -int semester
+        -int batch
+        -String session
+        -double cgpa
+        -int totalCredits
+        -boolean isActive
+        +Student(String studentId, String fullName, String email)
+        +calculateCGPA() double
+        +updateProfile(String phone, String email) void
+        +enrollInCourse(Course course) boolean
+        +getAcademicRecord() List~Assessment~
+        +getCurrentSemester() int
+    }
+
+    class Faculty {
+        -String facultyId
+        -int userId
+        -String fullName
+        -String email
+        -String designation
+        -String department
+        -Date joiningDate
+        -boolean isActive
+        +Faculty(String facultyId, String fullName, String email)
+        +assignCourse(Course course) void
+        +enterGrades(String studentId, Assessment assessment) void
+        +markAttendance(String studentId, String status) void
+        +generateReports() List~Report~
+    }
+
+    class Course {
+        -int courseId
+        -String courseCode
+        -String courseName
+        -int creditHours
+        -int semester
+        -int batch
+        -String session
+        -String facultyId
+        -boolean isActive
+        -int maxEnrollment
+        +Course(String courseCode, String courseName, int creditHours)
+        +enrollStudent(Student student) boolean
+        +getEnrolledStudents() List~Student~
+        +calculateGradeDistribution() Map~String, Integer~
+        +isEnrollmentOpen() boolean
+    }
+
+    class Assessment {
+        -int assessmentId
+        -String studentId
+        -int courseId
+        -String assessmentType
+        -double marks
+        -double maxMarks
+        -double weightage
+        -DateTime submissionDate
+        -boolean isPublished
+        -String gradedBy
+        +Assessment(String studentId, int courseId, String type)
+        +calculatePercentage() double
+        +getLetterGrade() String
+        +getGradePoint() double
+        +validate() boolean
+    }
+
+    class Enrollment {
+        -int enrollmentId
+        -String studentId
+        -int courseId
+        -String session
+        -DateTime enrollmentDate
+        -boolean isActive
+        -String enrollmentStatus
+        -double finalGrade
+        -String letterGrade
+        -double gradePoint
+        +Enrollment(String studentId, int courseId)
+        +calculateFinalGrade() double
+        +updateStatus(String status) void
+        +isCompleted() boolean
+    }
+
+    %% Controller Classes
+    class AdminController {
+        -UserDAO userDAO
+        -StudentDAO studentDAO
+        -FacultyDAO facultyDAO
+        -CourseDAO courseDAO
+        +AdminController()
+        +createUser(User user) boolean
+        +manageStudents() void
+        +manageFaculty() void
+        +manageCourses() void
+        +generateSystemReports() void
+        +configureSystem() void
+    }
+
+    class FacultyController {
+        -CourseDAO courseDAO
+        -AssessmentDAO assessmentDAO
+        -AttendanceDAO attendanceDAO
+        +FacultyController(String facultyId)
+        +viewAssignedCourses() List~Course~
+        +enterGrades(String courseId) void
+        +markAttendance(String courseId) void
+        +generateGradeReports() void
+        +publishGrades(String courseId) void
+    }
+
+    class StudentController {
+        -StudentDAO studentDAO
+        -EnrollmentDAO enrollmentDAO
+        -AssessmentDAO assessmentDAO
+        +StudentController(String studentId)
+        +viewProfile() Student
+        +updateProfile(Student student) void
+        +viewGrades() List~Assessment~
+        +viewAttendance() List~Attendance~
+        +viewTranscript() Transcript
+    }
+
+    %% DAO Classes
+    class UserDAO {
+        -DatabaseConnection connection
+        +UserDAO(DatabaseConnection connection)
+        +createUser(User user) boolean
+        +getUserById(int userId) User
+        +getUserByUsername(String username) User
+        +updateUser(User user) boolean
+        +deleteUser(int userId) boolean
+        +validateCredentials(String username, String password) User
+    }
+
+    class StudentDAO {
+        -DatabaseConnection connection
+        +StudentDAO(DatabaseConnection connection)
+        +createStudent(Student student) boolean
+        +getStudentById(String studentId) Student
+        +updateStudent(Student student) boolean
+        +deleteStudent(String studentId) boolean
+        +getStudentsByBatch(int batch) List~Student~
+        +searchStudents(String criteria) List~Student~
+    }
+
+    class CourseDAO {
+        -DatabaseConnection connection
+        +CourseDAO(DatabaseConnection connection)
+        +createCourse(Course course) boolean
+        +getCourseById(int courseId) Course
+        +updateCourse(Course course) boolean
+        +deleteCourse(int courseId) boolean
+        +getCoursesByFaculty(String facultyId) List~Course~
+        +getAvailableCourses(int semester) List~Course~
+    }
+
+    class AssessmentDAO {
+        -DatabaseConnection connection
+        +AssessmentDAO(DatabaseConnection connection)
+        +createAssessment(Assessment assessment) boolean
+        +getAssessmentById(int assessmentId) Assessment
+        +updateAssessment(Assessment assessment) boolean
+        +getStudentAssessments(String studentId, int courseId) List~Assessment~
+        +calculateFinalGrade(String studentId, int courseId) double
+    }
+
+    %% Utility Classes
+    class DatabaseConnection {
+        -String connectionString
+        -Connection connection
+        -static DatabaseConnection instance
+        +DatabaseConnection()
+        +static getInstance() DatabaseConnection
+        +getConnection() Connection
+        +closeConnection() void
+        +beginTransaction() void
+        +commitTransaction() void
+        +rollbackTransaction() void
+    }
+
+    class EmailService {
+        -String smtpHost
+        -String smtpPort
+        -String username
+        -String password
+        +EmailService()
+        +sendEmail(String to, String subject, String body) boolean
+        +sendGradeNotification(Student student, Assessment assessment) boolean
+        +sendWelcomeEmail(Student student, String temporaryPassword) boolean
+        +sendBulkNotification(List~String~ recipients, String message) void
+    }
+
+    class GradeCalculationService {
+        +GradeCalculationService()
+        +calculateWeightedGrade(List~Assessment~ assessments) double
+        +calculateGPA(double finalMarks) double
+        +getLetterGrade(double finalMarks) String
+        +calculateCGPA(List~Enrollment~ enrollments) double
+        +validateGradeEntry(Assessment assessment) boolean
+    }
+
+    %% Service Classes
+    class AuthenticationService {
+        -UserDAO userDAO
+        +AuthenticationService(UserDAO userDAO)
+        +authenticate(String username, String password) User
+        +authorize(User user, String operation) boolean
+        +changePassword(int userId, String oldPassword, String newPassword) boolean
+        +resetPassword(String email) String
+        +createSession(User user) Session
+    }
+
+    class ReportService {
+        -StudentDAO studentDAO
+        -CourseDAO courseDAO
+        -AssessmentDAO assessmentDAO
+        +ReportService()
+        +generateTranscript(String studentId) Transcript
+        +generateGradeReport(String courseId) GradeReport
+        +generateAttendanceReport(String studentId) AttendanceReport
+        +generatePerformanceAnalytics() PerformanceReport
+    }
+
+    %% Relationships
+    User ||--|| Student : extends
+    User ||--|| Faculty : extends
+    
+    Student ||--o{ Enrollment : has
+    Course ||--o{ Enrollment : contains
+    
+    Student ||--o{ Assessment : takes
+    Course ||--o{ Assessment : has
+    Faculty ||--o{ Assessment : grades
+    
+    Faculty ||--o{ Course : teaches
+    
+    AdminController --> UserDAO : uses
+    AdminController --> StudentDAO : uses
+    AdminController --> CourseDAO : uses
+    
+    FacultyController --> CourseDAO : uses
+    FacultyController --> AssessmentDAO : uses
+    
+    StudentController --> StudentDAO : uses
+    StudentController --> AssessmentDAO : uses
+    
+    UserDAO --> DatabaseConnection : uses
+    StudentDAO --> DatabaseConnection : uses
+    CourseDAO --> DatabaseConnection : uses
+    AssessmentDAO --> DatabaseConnection : uses
+    
+    FacultyController --> EmailService : uses
+    AuthenticationService --> UserDAO : uses
+    ReportService --> StudentDAO : uses
+    ReportService --> CourseDAO : uses
+    ReportService --> AssessmentDAO : uses
+    
+    AssessmentDAO --> GradeCalculationService : uses

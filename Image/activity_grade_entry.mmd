@@ -1,0 +1,66 @@
+flowchart TD
+    Start([🎯 Start: Grade Entry Process]) --> SelectCourse[📚 Faculty Selects Course]
+    
+    SelectCourse --> LoadStudents[👥 Load Enrolled Students List]
+    LoadStudents --> SelectAssessment{📝 Select Assessment Type}
+    
+    SelectAssessment -->|Quiz| QuizEntry[📊 Quiz Grade Entry]
+    SelectAssessment -->|Assignment| AssignEntry[📋 Assignment Grade Entry]
+    SelectAssessment -->|Midterm| MidtermEntry[📈 Midterm Grade Entry]
+    SelectAssessment -->|Final| FinalEntry[🎯 Final Exam Grade Entry]
+    
+    QuizEntry --> EnterGrades[✏️ Enter Individual Student Grades]
+    AssignEntry --> EnterGrades
+    MidtermEntry --> EnterGrades
+    FinalEntry --> EnterGrades
+    
+    EnterGrades --> ValidateGrade{🔍 Validate Grade Range}
+    ValidateGrade -->|Invalid Range| ShowRangeError[❌ Grade Out of Range Error]
+    ShowRangeError --> EnterGrades
+    
+    ValidateGrade -->|Valid| CheckComplete{✅ All Students Graded?}
+    CheckComplete -->|No| EnterGrades
+    
+    CheckComplete -->|Yes| ReviewGrades[👀 Review All Grades]
+    ReviewGrades --> ConfirmGrades{✅ Confirm Grade Entry?}
+    
+    ConfirmGrades -->|No| EnterGrades
+    ConfirmGrades -->|Yes| SaveGrades[💾 Save Grades to Database]
+    
+    SaveGrades --> CalculateStats[📊 Calculate Class Statistics]
+    CalculateStats --> UpdateGPA[📈 Update Student GPAs]
+    
+    UpdateGPA --> CheckPublish{📢 Publish Grades Now?}
+    CheckPublish -->|No| SaveDraft[📝 Save as Draft]
+    SaveDraft --> End1([🔚 End: Grades Saved as Draft])
+    
+    CheckPublish -->|Yes| PublishGrades[📢 Publish Grades]
+    PublishGrades --> GenerateReports[📄 Generate Grade Reports]
+    
+    GenerateReports --> SendNotifications[📧 Send Email Notifications]
+    SendNotifications --> LogActivity[📝 Log Grade Entry Activity]
+    
+    LogActivity --> UpdateTranscripts[📜 Update Student Transcripts]
+    UpdateTranscripts --> End2([🔚 End: Grades Successfully Published])
+
+    %% Error Handling
+    SaveGrades -->|Database Error| DBError[❌ Database Connection Error]
+    DBError --> RetryDB{🔄 Retry Database Operation?}
+    RetryDB -->|Yes| SaveGrades
+    RetryDB -->|No| End3([🔚 End: Operation Failed])
+    
+    SendNotifications -->|Email Error| EmailError[❌ Email Delivery Failed]
+    EmailError --> LogEmailError[📝 Log Email Error]
+    LogEmailError --> UpdateTranscripts
+
+    %% Styling
+    classDef startEnd fill:#c8e6c9,stroke:#4caf50,stroke-width:3px,color:#000
+    classDef process fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+    classDef decision fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000
+    classDef error fill:#ffebee,stroke:#f44336,stroke-width:2px,color:#000
+    classDef success fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+
+    class Start,End1,End2,End3 startEnd
+    class SelectCourse,LoadStudents,QuizEntry,AssignEntry,MidtermEntry,FinalEntry,EnterGrades,ReviewGrades,SaveGrades,CalculateStats,UpdateGPA,SaveDraft,PublishGrades,GenerateReports,SendNotifications,LogActivity,UpdateTranscripts,LogEmailError process
+    class SelectAssessment,ValidateGrade,CheckComplete,ConfirmGrades,CheckPublish,RetryDB decision
+    class ShowRangeError,DBError,EmailError error

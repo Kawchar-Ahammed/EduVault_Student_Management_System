@@ -1,0 +1,88 @@
+flowchart TB
+    %% External Entities
+    Admin[🔧 Administrator]
+    Faculty[👨‍🏫 Faculty]
+    Student[👨‍🎓 Student]
+    EmailSys[📧 Email System]
+
+    %% Level 1 Processes
+    P1((1.0<br/>User<br/>Authentication))
+    P2((2.0<br/>User<br/>Management))
+    P3((3.0<br/>Course<br/>Management))
+    P4((4.0<br/>Grade<br/>Management))
+    P5((5.0<br/>Student<br/>Management))
+    P6((6.0<br/>Report<br/>Generation))
+
+    %% Data Stores
+    D1[(D1: Users)]
+    D2[(D2: Students)]
+    D3[(D3: Faculty)]
+    D4[(D4: Courses)]
+    D5[(D5: Assessments)]
+    D6[(D6: Enrollments)]
+
+    %% External Entity Flows
+    Admin -.->|"Login Request"| P1
+    Faculty -.->|"Login Request"| P1
+    Student -.->|"Login Request"| P1
+
+    P1 -.->|"Authentication Status"| Admin
+    P1 -.->|"Authentication Status"| Faculty
+    P1 -.->|"Authentication Status"| Student
+
+    %% Admin Flows
+    Admin -.->|"User Creation Request"| P2
+    Admin -.->|"Course Setup Request"| P3
+    Admin -.->|"Report Request"| P6
+    P2 -.->|"User Account Details"| Admin
+    P3 -.->|"Course Information"| Admin
+    P6 -.->|"System Reports"| Admin
+
+    %% Faculty Flows
+    Faculty -.->|"Grade Entry"| P4
+    Faculty -.->|"Course Updates"| P3
+    P3 -.->|"Assigned Courses"| Faculty
+    P4 -.->|"Grade Confirmation"| Faculty
+    P5 -.->|"Student Lists"| Faculty
+
+    %% Student Flows
+    Student -.->|"Profile Update"| P5
+    Student -.->|"Enrollment Request"| P5
+    P4 -.->|"Grade Reports"| Student
+    P5 -.->|"Academic Records"| Student
+
+    %% Process to Data Store Flows
+    P1 <-.->|"User Credentials"| D1
+    P2 <-.->|"User Data"| D1
+    P2 <-.->|"Student Records"| D2
+    P2 <-.->|"Faculty Records"| D3
+    
+    P3 <-.->|"Course Data"| D4
+    P3 <-.->|"Faculty Assignment"| D3
+    
+    P4 <-.->|"Assessment Data"| D5
+    P4 <-.->|"Student Performance"| D2
+    
+    P5 <-.->|"Student Information"| D2
+    P5 <-.->|"Enrollment Data"| D6
+    P5 <-.->|"Course Selection"| D4
+    
+    P6 <-.->|"Report Data"| D1
+    P6 <-.->|"Performance Data"| D5
+    P6 <-.->|"Course Statistics"| D4
+
+    %% Email System Integration
+    P4 -.->|"Grade Notifications"| EmailSys
+    P2 -.->|"Welcome Emails"| EmailSys
+    P5 -.->|"Enrollment Confirmations"| EmailSys
+
+    %% Styling
+    classDef processBox fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    classDef entityBox fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef dataStore fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+    classDef emailBox fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+
+    class P1,P2,P3,P4,P5,P6 processBox
+    class Admin,Faculty,Student entityBox
+    class D1,D2,D3,D4,D5,D6 dataStore
+    class EmailSys emailBox

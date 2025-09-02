@@ -1,0 +1,59 @@
+flowchart TD
+    Start([🎯 Start: Student Login]) --> LoginInput[📝 Enter Username & Password]
+    
+    LoginInput --> ValidateInput{🔍 Validate Input Format}
+    ValidateInput -->|Invalid| ShowError1[❌ Display Input Error Message]
+    ShowError1 --> LoginInput
+    
+    ValidateInput -->|Valid| CheckDB{🗄️ Check Database Credentials}
+    CheckDB -->|Invalid Credentials| ShowError2[❌ Display Invalid Credentials]
+    ShowError2 --> LoginInput
+    
+    CheckDB -->|Valid| CheckStatus{👤 Check Account Status}
+    CheckStatus -->|Inactive| ShowError3[❌ Display Account Disabled]
+    ShowError3 --> End1([🔚 End: Login Failed])
+    
+    CheckStatus -->|Active| LoadProfile[📊 Load Student Profile]
+    LoadProfile --> LoadDashboard[🏠 Load Student Dashboard]
+    
+    LoadDashboard --> ShowMenu[📋 Display Main Menu]
+    ShowMenu --> MenuChoice{🎯 User Selection}
+    
+    MenuChoice -->|View Grades| ViewGrades[📈 Display Grade Report]
+    MenuChoice -->|Update Profile| UpdateProfile[✏️ Show Profile Form]
+    MenuChoice -->|Course Enrollment| CourseEnroll[📚 Show Available Courses]
+    MenuChoice -->|View Transcript| ViewTranscript[📜 Generate Transcript]
+    MenuChoice -->|Logout| Logout[🚪 Logout Process]
+    
+    ViewGrades --> ShowMenu
+    UpdateProfile --> SaveProfile[💾 Save Profile Changes]
+    SaveProfile --> ShowMenu
+    
+    CourseEnroll --> SelectCourse[✅ Select Course]
+    SelectCourse --> CheckPrereq{📋 Check Prerequisites}
+    CheckPrereq -->|Not Met| ShowPrereqError[❌ Prerequisites Not Met]
+    ShowPrereqError --> CourseEnroll
+    CheckPrereq -->|Met| CheckCapacity{👥 Check Course Capacity}
+    CheckCapacity -->|Full| ShowCapacityError[❌ Course Full]
+    ShowCapacityError --> CourseEnroll
+    CheckCapacity -->|Available| EnrollStudent[✅ Enroll in Course]
+    EnrollStudent --> SendConfirmation[📧 Send Enrollment Email]
+    SendConfirmation --> ShowMenu
+    
+    ViewTranscript --> GeneratePDF[📄 Generate PDF Transcript]
+    GeneratePDF --> ShowMenu
+    
+    Logout --> ClearSession[🗑️ Clear User Session]
+    ClearSession --> End2([🔚 End: Successful Logout])
+
+    %% Styling
+    classDef startEnd fill:#c8e6c9,stroke:#4caf50,stroke-width:3px,color:#000
+    classDef process fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+    classDef decision fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000
+    classDef error fill:#ffebee,stroke:#f44336,stroke-width:2px,color:#000
+    classDef success fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+
+    class Start,End1,End2 startEnd
+    class LoginInput,LoadProfile,LoadDashboard,ShowMenu,ViewGrades,UpdateProfile,CourseEnroll,ViewTranscript,SaveProfile,SelectCourse,EnrollStudent,SendConfirmation,GeneratePDF,Logout,ClearSession process
+    class ValidateInput,CheckDB,CheckStatus,MenuChoice,CheckPrereq,CheckCapacity decision
+    class ShowError1,ShowError2,ShowError3,ShowPrereqError,ShowCapacityError error

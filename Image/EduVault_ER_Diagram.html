@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVault ER Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #3498db;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+        #diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .download-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+        .download-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f6f3;
+            border-left: 4px solid #1abc9c;
+            border-radius: 0 8px 8px 0;
+        }
+        .info-section h3 {
+            color: #16a085;
+            margin-top: 0;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>EduVault Academic Management System</h1>
+            <p>Entity Relationship (ER) Diagram</p>
+            <p style="font-size: 0.9em; color: #95a5a6;">Database Schema Design - Version 1.0</p>
+        </div>
+
+        <div id="diagram">
+            <div class="mermaid">
+erDiagram
+    USERS {
+        int userId PK
+        string username UK
+        string passwordHash
+        string email UK
+        string fullName
+        string roleName
+        boolean isActive
+        datetime createdDate
+        datetime lastLogin
+    }
+    
+    STUDENTS {
+        string studentId PK
+        int userId FK
+        string fullName
+        string email
+        string phone
+        int semester
+        int batch
+        string session
+        decimal cgpa
+        int totalCredits
+        boolean isActive
+    }
+    
+    FACULTY {
+        string facultyId PK
+        int userId FK
+        string fullName
+        string email
+        string designation
+        string department
+        date joiningDate
+        boolean isActive
+    }
+    
+    COURSES {
+        int courseId PK
+        string courseCode UK
+        string courseName
+        int creditHours
+        int semester
+        int batch
+        string session
+        string facultyId FK
+        boolean isActive
+        int maxEnrollment
+    }
+    
+    ENROLLMENTS {
+        int enrollmentId PK
+        string studentId FK
+        int courseId FK
+        string session
+        datetime enrollmentDate
+        boolean isActive
+        string enrollmentStatus
+        decimal finalGrade
+        string letterGrade
+        decimal gradePoint
+    }
+    
+    ASSESSMENTS {
+        int assessmentId PK
+        string studentId FK
+        int courseId FK
+        string assessmentType
+        decimal marks
+        decimal maxMarks
+        decimal weightage
+        datetime submissionDate
+        boolean isPublished
+        string gradedBy FK
+    }
+    
+    ATTENDANCE {
+        int attendanceId PK
+        string studentId FK
+        int courseId FK
+        date attendanceDate
+        string status
+        string markedBy FK
+        datetime markedDate
+    }
+    
+    NOTIFICATIONS {
+        int notificationId PK
+        int userId FK
+        string title
+        string message
+        string type
+        boolean isRead
+        datetime createdDate
+    }
+    
+    AUDIT_LOGS {
+        int logId PK
+        int userId FK
+        string action
+        string tableName
+        string recordId
+        datetime timestamp
+        string ipAddress
+    }
+    
+    ACADEMIC_SESSIONS {
+        int sessionId PK
+        string sessionName UK
+        date startDate
+        date endDate
+        boolean isActive
+    }
+    
+    USERS ||--o{ STUDENTS : "has_profile"
+    USERS ||--o{ FACULTY : "has_profile"
+    USERS ||--o{ NOTIFICATIONS : "receives"
+    USERS ||--o{ AUDIT_LOGS : "logs_activity"
+    
+    STUDENTS ||--o{ ENROLLMENTS : "enrolls_in"
+    STUDENTS ||--o{ ASSESSMENTS : "takes"
+    STUDENTS ||--o{ ATTENDANCE : "attends"
+    
+    FACULTY ||--o{ COURSES : "teaches"
+    FACULTY ||--o{ ASSESSMENTS : "grades"
+    FACULTY ||--o{ ATTENDANCE : "marks"
+    
+    COURSES ||--o{ ENROLLMENTS : "has_enrollments"
+    COURSES ||--o{ ASSESSMENTS : "has_assessments"
+    COURSES ||--o{ ATTENDANCE : "tracks_attendance"
+    
+    ACADEMIC_SESSIONS ||--o{ COURSES : "contains"
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h3>Download Options</h3>
+            <p>Right-click on the diagram above and select "Save image as..." to download as PNG</p>
+            <button class="download-btn" onclick="downloadSVG()">Download as SVG</button>
+            <button class="download-btn" onclick="printDiagram()">Print Diagram</button>
+        </div>
+
+        <div class="info-section">
+            <h3>Database Schema Overview</h3>
+            <p>This Entity Relationship diagram represents the complete database schema for the EduVault Academic Management System. The schema supports comprehensive academic operations including user management, course administration, grade tracking, and attendance monitoring.</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Core Entities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Relationships</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">Attributes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">User Roles</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>User Management:</strong> Role-based authentication with Admin, Faculty, and Student roles</li>
+                <li><strong>Academic Tracking:</strong> Complete student academic history and progress monitoring</li>
+                <li><strong>Grade Management:</strong> Comprehensive assessment and grading system with weighted calculations</li>
+                <li><strong>Attendance Monitoring:</strong> Daily attendance tracking with multiple status options</li>
+                <li><strong>Audit Trail:</strong> Complete activity logging for security and compliance</li>
+                <li><strong>Notification System:</strong> Automated notifications for grades, announcements, and alerts</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#3498db',
+                lineColor: '#34495e',
+                secondaryColor: '#ecf0f1',
+                tertiaryColor: '#f8f9fa'
+            },
+            er: {
+                diagramPadding: 20,
+                layoutDirection: 'TB',
+                minEntityWidth: 100,
+                minEntityHeight: 75,
+                entityPadding: 15,
+                fontSize: 12
+            }
+        });
+
+        function downloadSVG() {
+            const svg = document.querySelector('#diagram svg');
+            if (svg) {
+                const svgData = new XMLSerializer().serializeToString(svg);
+                const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+                const svgUrl = URL.createObjectURL(svgBlob);
+                const downloadLink = document.createElement('a');
+                downloadLink.href = svgUrl;
+                downloadLink.download = 'EduVault_ER_Diagram.svg';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+        }
+
+        function printDiagram() {
+            window.print();
+        }
+
+        // Add some styling after Mermaid renders
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const svg = document.querySelector('#diagram svg');
+                if (svg) {
+                    svg.style.maxWidth = '100%';
+                    svg.style.height = 'auto';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

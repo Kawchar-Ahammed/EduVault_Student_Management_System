@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+   <top>
+      <VBox>
+         <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <Label text="Academic Management System - Admin Dashboard" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="welcomeLabel" text="Welcome, Admin" style="-fx-text-fill: white; -fx-font-size: 14px;" />
+            <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+         </HBox>
+      </VBox>
+   </top>
+   
+   <center>
+      <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
+         
+         <!-- Faculty Management Tab -->
+         <Tab text="Faculty Management">
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+               
+               <HBox spacing="10" alignment="CENTER_LEFT">
+                  <Label text="Faculty Management" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="addFacultyButton" text="Add Faculty" onAction="#handleAddFaculty" 
+                          style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+                  <Button fx:id="refreshFacultyButton" text="Refresh" onAction="#handleRefreshFaculty" 
+                          style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+               </HBox>
+               
+               <TableView fx:id="facultyTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="facultyIdColumn" text="Faculty ID" prefWidth="80" />
+                     <TableColumn fx:id="facultyNameColumn" text="Full Name" prefWidth="150" />
+                     <TableColumn fx:id="facultyEmailColumn" text="Email" prefWidth="180" />
+                     <TableColumn fx:id="facultyDesignationColumn" text="Designation" prefWidth="120" />
+                     <TableColumn fx:id="facultySpecializationColumn" text="Specialization" prefWidth="150" />
+                     <TableColumn fx:id="facultyDepartmentColumn" text="Department" prefWidth="120" />
+                     <TableColumn fx:id="facultyStatusColumn" text="Status" prefWidth="80" />
+                     <TableColumn fx:id="facultyActionsColumn" text="Actions" prefWidth="150" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </Tab>
+        <!-- Users Management Tab -->
+        <Tab text="Users Management">
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+               <HBox spacing="10" alignment="CENTER_LEFT">
+                  <Label text="Users Management" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="addUserButton" text="Add User" onAction="#handleAddUser" style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+                  <Button fx:id="refreshUserButton" text="Refresh" onAction="#handleRefreshUser" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+               </HBox>
+               <TableView fx:id="userTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="userIdColumn" text="User ID" prefWidth="80" />
+                     <TableColumn fx:id="usernameColumn" text="Username" prefWidth="120" />
+                     <TableColumn fx:id="userPasswordColumn" text="Password" prefWidth="120" />
+                     <TableColumn fx:id="userFullNameColumn" text="Full Name" prefWidth="150" />
+                     <TableColumn fx:id="userEmailColumn" text="Email" prefWidth="180" />
+                     <TableColumn fx:id="userPhoneColumn" text="Phone" prefWidth="120" />
+                     <TableColumn fx:id="userDepartmentColumn" text="Department" prefWidth="120" />
+                     <TableColumn fx:id="userRoleColumn" text="Role" prefWidth="100" />
+                     <TableColumn fx:id="userStatusColumn" text="Status" prefWidth="80" />
+                     <TableColumn fx:id="userActionsColumn" text="Actions" prefWidth="150" />
+                  </columns>
+               </TableView>
+            </VBox>
+        </Tab>
+         
+         <!-- Student Management Tab -->
+         <Tab text="Student Management">
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+               
+               <HBox spacing="10" alignment="CENTER_LEFT">
+                  <Label text="Student Management" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <ComboBox fx:id="batchFilterCombo" promptText="Filter by Batch" onAction="#handleBatchFilter" />
+                  <ComboBox fx:id="semesterFilterCombo" promptText="Filter by Semester" onAction="#handleSemesterFilter" />
+                  <Button fx:id="addStudentButton" text="Add Student" onAction="#handleAddStudent" 
+                          style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+                  <Button fx:id="refreshStudentButton" text="Refresh" onAction="#handleRefreshStudent" 
+                          style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+               </HBox>
+               
+               <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="studentIdColumn" text="Student ID" prefWidth="80" />
+                     <TableColumn fx:id="studentNameColumn" text="Full Name" prefWidth="150" />
+                     <TableColumn fx:id="studentEmailColumn" text="Email" prefWidth="180" />
+                     <TableColumn fx:id="studentBatchColumn" text="Batch" prefWidth="80" />
+                     <TableColumn fx:id="studentSemesterColumn" text="Semester" prefWidth="80" />
+                     <TableColumn fx:id="studentCgpaColumn" text="CGPA" prefWidth="70" />
+                     <TableColumn fx:id="studentStatusColumn" text="Status" prefWidth="80" />
+                     <TableColumn fx:id="studentActionsColumn" text="Actions" prefWidth="150" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </Tab>
+         
+         <!-- Course Management Tab -->
+         <Tab text="Course Management">
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+               
+               <HBox spacing="10" alignment="CENTER_LEFT">
+                  <Label text="Course Management" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <ComboBox fx:id="courseBatchFilterCombo" promptText="Filter by Batch" onAction="#handleCourseBatchFilter" />
+                  <ComboBox fx:id="courseSemesterFilterCombo" promptText="Filter by Semester" onAction="#handleCourseSemesterFilter" />
+                  <Button fx:id="addCourseButton" text="Add Course" onAction="#handleAddCourse" 
+                          style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+                  <Button fx:id="refreshCourseButton" text="Refresh" onAction="#handleRefreshCourse" 
+                          style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+               </HBox>
+               
+               <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="courseCodeColumn" text="Course Code" prefWidth="100" />
+                     <TableColumn fx:id="courseNameColumn" text="Course Name" prefWidth="200" />
+                     <TableColumn fx:id="courseCreditsColumn" text="Credits" prefWidth="70" />
+                     <TableColumn fx:id="courseSemesterColumn" text="Semester" prefWidth="80" />
+                     <TableColumn fx:id="courseBatchColumn" text="Batch" prefWidth="80" />
+                     <TableColumn fx:id="courseSessionColumn" text="Session" prefWidth="100" />
+                     <TableColumn fx:id="courseFacultyColumn" text="Faculty" prefWidth="150" />
+                     <TableColumn fx:id="courseDepartmentColumn" text="Department" prefWidth="120" />
+                     <TableColumn fx:id="courseActionsColumn" text="Actions" prefWidth="150" />
+                  </columns>
+               </TableView>
+            </VBox>
+         </Tab>
+         
+         <!-- Reports Tab -->
+         <Tab text="Reports &amp; Analytics">
+            <VBox spacing="20">
+               <padding>
+                  <Insets top="20" right="20" bottom="20" left="20" />
+               </padding>
+               
+               <Label text="System Reports &amp; Analytics" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+               
+               <GridPane hgap="20" vgap="15">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" />
+                     <ColumnConstraints hgrow="SOMETIMES" />
+                     <ColumnConstraints hgrow="SOMETIMES" />
+                  </columnConstraints>
+                  
+                  <!-- Statistics Cards -->
+                  <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" spacing="10" 
+                        style="-fx-background-color: #ecf0f1; -fx-padding: 20; -fx-background-radius: 10;">
+                     <Label text="Total Faculty" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                     <Label fx:id="totalFacultyLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50;" />
+                  </VBox>
+                  
+                  <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" spacing="10" 
+                        style="-fx-background-color: #ecf0f1; -fx-padding: 20; -fx-background-radius: 10;">
+                     <Label text="Total Students" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                     <Label fx:id="totalStudentsLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50;" />
+                  </VBox>
+                  
+                  <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" spacing="10" 
+                        style="-fx-background-color: #ecf0f1; -fx-padding: 20; -fx-background-radius: 10;">
+                     <Label text="Total Courses" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                     <Label fx:id="totalCoursesLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50;" />
+                  </VBox>
+               </GridPane>
+               
+               <HBox spacing="15">
+                  <Button fx:id="generateFacultyReportButton" text="Faculty Report" onAction="#handleGenerateFacultyReport" 
+                          style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-pref-width: 150;" />
+                  <Button fx:id="generateStudentReportButton" text="Student Report" onAction="#handleGenerateStudentReport" 
+                          style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-pref-width: 150;" />
+                  <Button fx:id="generateCourseReportButton" text="Course Report" onAction="#handleGenerateCourseReport" 
+                          style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-pref-width: 150;" />
+               </HBox>
+            </VBox>
+         </Tab>
+         
+      </TabPane>
+   </center>
+   
+   <bottom>
+      <HBox alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 10;">
+         <Label text="Pushpo Academic Management System © 2024" style="-fx-text-fill: white; -fx-font-size: 12px;" />
+      </HBox>
+   </bottom>
+</BorderPane>

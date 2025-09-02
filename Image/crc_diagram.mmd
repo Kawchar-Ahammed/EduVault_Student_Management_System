@@ -1,0 +1,226 @@
+graph TB
+    subgraph "Model Layer"
+        User["`**User**
+        Responsibilities:
+        • Authentication
+        • Profile Management
+        • Role Enforcement
+        
+        Collaborations:
+        • Student, Faculty
+        • AuthenticationService
+        • UserDAO`"]
+        
+        Student["`**Student**
+        Responsibilities:
+        • Academic Records
+        • CGPA Calculation
+        • Enrollment Management
+        
+        Collaborations:
+        • User, Enrollment
+        • Assessment, Attendance
+        • StudentDAO`"]
+        
+        Faculty["`**Faculty**
+        Responsibilities:
+        • Course Management
+        • Grade Entry
+        • Attendance Marking
+        
+        Collaborations:
+        • User, Course
+        • Assessment
+        • FacultyDAO`"]
+        
+        Course["`**Course**
+        Responsibilities:
+        • Course Information
+        • Enrollment Management
+        • Capacity Tracking
+        
+        Collaborations:
+        • Faculty, Student
+        • Enrollment
+        • CourseDAO`"]
+        
+        Assessment["`**Assessment**
+        Responsibilities:
+        • Grade Storage
+        • Grade Calculation
+        • Validation
+        
+        Collaborations:
+        • Student, Course
+        • Faculty
+        • AssessmentDAO`"]
+    end
+    
+    subgraph "Controller Layer"
+        AdminController["`**AdminController**
+        Responsibilities:
+        • System Administration
+        • User Management
+        • Report Generation
+        
+        Collaborations:
+        • UserDAO, StudentDAO
+        • FacultyDAO, CourseDAO
+        • ReportService`"]
+        
+        FacultyController["`**FacultyController**
+        Responsibilities:
+        • Grade Management
+        • Attendance Marking
+        • Course Operations
+        
+        Collaborations:
+        • CourseDAO
+        • AssessmentDAO
+        • EmailService`"]
+        
+        StudentController["`**StudentController**
+        Responsibilities:
+        • Profile Management
+        • Grade Viewing
+        • Record Access
+        
+        Collaborations:
+        • StudentDAO
+        • AssessmentDAO
+        • ReportService`"]
+    end
+    
+    subgraph "DAO Layer"
+        UserDAO["`**UserDAO**
+        Responsibilities:
+        • User CRUD Operations
+        • Authentication Queries
+        • Role Management
+        
+        Collaborations:
+        • DatabaseConnection
+        • User
+        • AuthenticationService`"]
+        
+        StudentDAO["`**StudentDAO**
+        Responsibilities:
+        • Student CRUD Operations
+        • Academic Records
+        • CGPA Management
+        
+        Collaborations:
+        • DatabaseConnection
+        • Student
+        • GradeCalculationService`"]
+        
+        AssessmentDAO["`**AssessmentDAO**
+        Responsibilities:
+        • Grade CRUD Operations
+        • Grade Calculations
+        • Statistics Generation
+        
+        Collaborations:
+        • DatabaseConnection
+        • Assessment
+        • GradeCalculationService`"]
+    end
+    
+    subgraph "Service Layer"
+        AuthenticationService["`**AuthenticationService**
+        Responsibilities:
+        • User Authentication
+        • Authorization
+        • Session Management
+        
+        Collaborations:
+        • UserDAO
+        • User
+        • SessionManager`"]
+        
+        GradeCalculationService["`**GradeCalculationService**
+        Responsibilities:
+        • Grade Calculations
+        • GPA Computation
+        • Grade Validation
+        
+        Collaborations:
+        • Assessment
+        • Student
+        • AssessmentDAO`"]
+        
+        EmailService["`**EmailService**
+        Responsibilities:
+        • Email Notifications
+        • Template Generation
+        • Bulk Operations
+        
+        Collaborations:
+        • Student, Faculty
+        • Assessment
+        • NotificationService`"]
+        
+        ReportService["`**ReportService**
+        Responsibilities:
+        • Report Generation
+        • Data Analytics
+        • Export Operations
+        
+        Collaborations:
+        • StudentDAO
+        • CourseDAO
+        • AssessmentDAO`"]
+    end
+    
+    subgraph "Utility Layer"
+        DatabaseConnection["`**DatabaseConnection**
+        Responsibilities:
+        • Connection Management
+        • Transaction Handling
+        • Connection Pooling
+        
+        Collaborations:
+        • All DAO Classes
+        • SystemSettings
+        • SecurityManager`"]
+    end
+    
+    %% Relationships
+    User --> Student
+    User --> Faculty
+    Student --> Assessment
+    Student --> Course
+    Faculty --> Course
+    Faculty --> Assessment
+    Course --> Assessment
+    
+    AdminController --> UserDAO
+    AdminController --> StudentDAO
+    AdminController --> ReportService
+    
+    FacultyController --> AssessmentDAO
+    FacultyController --> EmailService
+    
+    StudentController --> StudentDAO
+    StudentController --> AssessmentDAO
+    
+    UserDAO --> DatabaseConnection
+    StudentDAO --> DatabaseConnection
+    AssessmentDAO --> DatabaseConnection
+    
+    AuthenticationService --> UserDAO
+    GradeCalculationService --> AssessmentDAO
+    ReportService --> StudentDAO
+    
+    %% Styling
+    classDef modelClass fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    classDef controllerClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef daoClass fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+    classDef serviceClass fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    classDef utilityClass fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
+    
+    class User,Student,Faculty,Course,Assessment modelClass
+    class AdminController,FacultyController,StudentController controllerClass
+    class UserDAO,StudentDAO,AssessmentDAO daoClass
+    class AuthenticationService,GradeCalculationService,EmailService,ReportService serviceClass
+    class DatabaseConnection utilityClass

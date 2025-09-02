@@ -1,0 +1,170 @@
+classDiagram
+    %% Core Model Classes
+    class User {
+        -int userId
+        -String username
+        -String passwordHash
+        -String email
+        -String fullName
+        -String roleName
+        -boolean isActive
+        +validateCredentials() boolean
+        +isAdmin() boolean
+        +isFaculty() boolean
+        +isStudent() boolean
+    }
+
+    class Student {
+        -String studentId
+        -int userId
+        -String fullName
+        -String email
+        -int semester
+        -int batch
+        -String session
+        -double cgpa
+        -int totalCredits
+        +calculateCGPA() double
+        +updateProfile() void
+        +enrollInCourse() boolean
+    }
+
+    class Faculty {
+        -String facultyId
+        -int userId
+        -String fullName
+        -String email
+        -String designation
+        -String department
+        +assignCourse() void
+        +enterGrades() void
+        +markAttendance() void
+    }
+
+    class Course {
+        -int courseId
+        -String courseCode
+        -String courseName
+        -int creditHours
+        -int semester
+        -String facultyId
+        -int maxEnrollment
+        +enrollStudent() boolean
+        +getEnrolledStudents() List
+        +isEnrollmentOpen() boolean
+    }
+
+    class Assessment {
+        -int assessmentId
+        -String studentId
+        -int courseId
+        -String assessmentType
+        -double marks
+        -double maxMarks
+        -double weightage
+        -boolean isPublished
+        +calculatePercentage() double
+        +getLetterGrade() String
+        +validate() boolean
+    }
+
+    %% Controller Classes
+    class AdminController {
+        -UserDAO userDAO
+        -StudentDAO studentDAO
+        -FacultyDAO facultyDAO
+        +createUser() boolean
+        +manageStudents() void
+        +manageFaculty() void
+        +generateReports() void
+    }
+
+    class FacultyController {
+        -CourseDAO courseDAO
+        -AssessmentDAO assessmentDAO
+        +viewAssignedCourses() List
+        +enterGrades() void
+        +markAttendance() void
+        +publishGrades() void
+    }
+
+    class StudentController {
+        -StudentDAO studentDAO
+        -AssessmentDAO assessmentDAO
+        +viewProfile() Student
+        +updateProfile() void
+        +viewGrades() List
+        +viewTranscript() Transcript
+    }
+
+    %% DAO Classes
+    class UserDAO {
+        -DatabaseConnection connection
+        +createUser() boolean
+        +getUserById() User
+        +updateUser() boolean
+        +deleteUser() boolean
+        +validateCredentials() User
+    }
+
+    class StudentDAO {
+        -DatabaseConnection connection
+        +createStudent() boolean
+        +getStudentById() Student
+        +updateStudent() boolean
+        +getStudentsByBatch() List
+    }
+
+    class AssessmentDAO {
+        -DatabaseConnection connection
+        +createAssessment() boolean
+        +getStudentAssessments() List
+        +calculateFinalGrade() double
+        +updateAssessment() boolean
+    }
+
+    %% Service Classes
+    class GradeCalculationService {
+        +calculateWeightedGrade() double
+        +calculateGPA() double
+        +getLetterGrade() String
+        +validateGradeEntry() boolean
+    }
+
+    class EmailService {
+        -String smtpHost
+        -String username
+        -String password
+        +sendEmail() boolean
+        +sendGradeNotification() boolean
+        +sendWelcomeEmail() boolean
+    }
+
+    class DatabaseConnection {
+        -String connectionString
+        -Connection connection
+        +getInstance() DatabaseConnection
+        +getConnection() Connection
+        +beginTransaction() void
+        +commitTransaction() void
+    }
+
+    %% Relationships
+    User <|-- Student
+    User <|-- Faculty
+    
+    Student "1" -- "0..*" Assessment
+    Course "1" -- "0..*" Assessment
+    Faculty "1" -- "0..*" Course
+    
+    AdminController ..> UserDAO
+    AdminController ..> StudentDAO
+    FacultyController ..> AssessmentDAO
+    StudentController ..> StudentDAO
+    
+    UserDAO ..> DatabaseConnection
+    StudentDAO ..> DatabaseConnection
+    AssessmentDAO ..> DatabaseConnection
+    
+    AssessmentDAO ..> GradeCalculationService
+    FacultyController ..> EmailService

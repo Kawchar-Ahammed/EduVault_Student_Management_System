@@ -1,0 +1,50 @@
+flowchart TB
+    %% External Entities
+    Admin[🔧 Administrator]
+    Faculty[👨‍🏫 Faculty]
+    Student[👨‍🎓 Student]
+    EmailSys[📧 Email System]
+    DBSys[🗄️ Database System]
+
+    %% Central System
+    EduVault{{"🎓 EduVault Academic Management System"}}
+
+    %% Data Flows from External Entities to System
+    Admin -.->|"User Management Requests"| EduVault
+    Admin -.->|"System Configuration"| EduVault
+    Admin -.->|"Report Requests"| EduVault
+    
+    Faculty -.->|"Login Credentials"| EduVault
+    Faculty -.->|"Course Information"| EduVault
+    Faculty -.->|"Grade Entries"| EduVault
+    Faculty -.->|"Attendance Data"| EduVault
+    
+    Student -.->|"Login Credentials"| EduVault
+    Student -.->|"Profile Updates"| EduVault
+    Student -.->|"Course Enrollment"| EduVault
+
+    %% Data Flows from System to External Entities
+    EduVault -.->|"User Account Details"| Admin
+    EduVault -.->|"System Reports"| Admin
+    EduVault -.->|"Management Dashboard"| Admin
+    
+    EduVault -.->|"Course Assignments"| Faculty
+    EduVault -.->|"Student Lists"| Faculty
+    EduVault -.->|"Grade Reports"| Faculty
+    
+    EduVault -.->|"Academic Records"| Student
+    EduVault -.->|"Grade Reports"| Student
+    EduVault -.->|"Enrollment Status"| Student
+
+    %% System Interactions
+    EduVault <-.->|"Email Notifications"| EmailSys
+    EduVault <-.->|"Data Storage/Retrieval"| DBSys
+
+    %% Styling
+    classDef systemBox fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000
+    classDef entityBox fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    classDef dataStore fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+
+    class EduVault systemBox
+    class Admin,Faculty,Student entityBox
+    class EmailSys,DBSys dataStore

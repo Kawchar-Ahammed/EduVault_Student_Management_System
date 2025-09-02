@@ -1,0 +1,245 @@
+/* Student Dashboard CSS */
+
+/* Root styles */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Header styles */
+.header {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 15px;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.welcome-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.student-id-label {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+}
+
+/* Button styles */
+.button {
+    -fx-background-radius: 3px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+}
+
+.logout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.success-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+}
+
+.success-button:hover {
+    -fx-background-color: #219955;
+}
+
+/* Tab styles */
+.tab-pane {
+    -fx-tab-min-width: 120px;
+}
+
+.tab {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 5px 10px;
+}
+
+.tab:selected {
+    -fx-background-color: #3498db;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 5px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: #eee;
+    -fx-padding: 5px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #d6eaf8;
+    -fx-text-fill: black;
+}
+
+/* ListView styles */
+.list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5px;
+}
+
+.list-view .list-cell {
+    -fx-padding: 10px;
+    -fx-border-color: transparent transparent #eee transparent;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #d6eaf8;
+    -fx-text-fill: black;
+}
+
+/* ComboBox styles */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #3498db;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 5px 10px;
+}
+
+/* Chart styles */
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5px;
+}
+
+.chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: #f8f9fa;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: #eee;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #eee;
+}
+
+.chart-bar {
+    -fx-bar-fill: #3498db;
+}
+
+.default-color0.chart-bar { -fx-bar-fill: #3498db; }
+.default-color1.chart-bar { -fx-bar-fill: #2ecc71; }
+.default-color2.chart-bar { -fx-bar-fill: #f1c40f; }
+.default-color3.chart-bar { -fx-bar-fill: #e74c3c; }
+.default-color4.chart-bar { -fx-bar-fill: #9b59b6; }
+
+/* Footer styles */
+.footer {
+    -fx-background-color: #34495e;
+    -fx-padding: 10px;
+}
+
+.footer-text {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+/* Note styles */
+.note-text {
+    -fx-font-style: italic;
+    -fx-text-fill: #7f8c8d;
+}
+
+/* Section title styles */
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Notification styles */
+.notification-item {
+    -fx-padding: 10px;
+    -fx-border-color: #eee;
+    -fx-border-width: 0 0 1 0;
+}
+
+.notification-item .notification-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.notification-item .notification-time {
+    -fx-font-style: italic;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 11px;
+}
+
+.notification-item.unread {
+    -fx-background-color: #edf7fd;
+}
