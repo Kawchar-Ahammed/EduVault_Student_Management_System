@@ -16,14 +16,14 @@
 
 **EduVault** is a comprehensive **desktop application** designed to streamline academic management processes in educational institutions. Built using **JavaFX** for the user interface and **Microsoft SQL Server** for robust data management, this system provides a complete solution for managing students, faculty, courses, grades, and administrative tasks.
 
-### 🎯 **What This Project Does**
+### 🎯 What This Project Does
 - **Student Management**: Registration, profile management, course enrollment, and academic tracking
 - **Faculty Operations**: Course assignments, grade entry, attendance tracking, and student performance monitoring  
 - **Administrative Control**: User management, system configuration, reporting, and oversight
 - **Grade Management**: Comprehensive assessment tracking with automated calculations and notifications
 - **Communication**: Integrated email notifications for important academic updates
 
-### 🏗️ **Why This Project Matters**
+### 🏗️ Why This Project Matters
 This system addresses real-world challenges in academic administration by providing:
 - **Centralized Data Management** - All academic information in one secure location
 - **Automated Processes** - Reduces manual work through automated grade calculations and notifications
@@ -52,42 +52,42 @@ java -cp "bin;lib/*" applications.Main
 - **Student**: `student` / `student123`
 
 ## 📋 Table of Contents
-- [Features](#-key-features)
-- [Technology Stack](#️-technology-stack)
-- [Prerequisites](#-prerequisites)
-- [Environment Setup](#-environment-setup)
-- [Installation Guide](#-installation-guide)
-- [Database Setup](#️-database-setup)
-- [Running the Project](#-running-the-project)
-- [User Guide](#-user-guide)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [Troubleshooting](#-troubleshooting)
-- [Future Enhancements](#-future-enhancements)
+- [✨ Key Features](#-key-features)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📋 Prerequisites](#-prerequisites)
+- [🌍 Environment Setup](#-environment-setup)
+- [🚀 Installation Guide](#-installation-guide)
+- [🗄️ Database Setup](#️-database-setup)
+- [▶️ Running the Project](#️-running-the-project)
+- [👥 User Guide](#-user-guide)
+- [📁 Project Structure](#-project-structure)
+- [🤝 Contributing](#-contributing)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [🚀 Future Enhancements](#-future-enhancements)
 
 ## ✨ Key Features
 
-### 🔐 **Authentication & Security**
+### 🔐 Authentication & Security
 - **Multi-Role Login System**: Separate interfaces for Admin, Faculty, and Students
 - **Secure Password Management**: Encrypted password storage and validation
 - **Session Management**: Automatic logout and session tracking
 - **Role-Based Permissions**: Access control based on user roles
 
-### 👨‍🎓 **Student Features**
+### 👨‍🎓 Student Features
 - **Profile Management**: View and update personal information
 - **Course Enrollment**: Browse available courses and enroll with prerequisite checking
 - **Grade Tracking**: Real-time access to grades and academic performance
 - **Transcript Generation**: Download official academic transcripts
 - **CGPA Calculation**: Automated cumulative grade point average computation
 
-### 👨‍🏫 **Faculty Features**
+### 👨‍🏫 Faculty Features
 - **Course Management**: View assigned courses and enrolled students
 - **Grade Entry**: Enter grades for various assessment types (Quiz, Assignment, Midterm, Final)
 - **Grade Publishing**: Publish final grades with automatic student notifications
 - **Attendance Tracking**: Mark and monitor student attendance
 - **Performance Analytics**: View class statistics and student performance trends
 
-### 🛡️ **Administrative Features**
+### 🛡️ Administrative Features
 - **User Management**: Create and manage student and faculty accounts
 - **Course Setup**: Configure courses, prerequisites, and enrollment limits
 - **System Reporting**: Generate comprehensive reports on system usage
@@ -96,8 +96,8 @@ java -cp "bin;lib/*" applications.Main
 
 ## 🛠️ Technology Stack
 
-| **Component** | **Technology** | **Version** | **Purpose** |
-|---------------|----------------|-------------|-------------|
+| Component | Technology | Version | Purpose |
+|-----------|------------|---------|---------|
 | **Programming Language** | Java | 17+ | Core application development |
 | **UI Framework** | JavaFX | 19+ | Desktop user interface |
 | **Database** | Microsoft SQL Server | 2019+ | Data persistence and management |
@@ -110,7 +110,7 @@ java -cp "bin;lib/*" applications.Main
 
 Before setting up the project, ensure you have the following installed on your system:
 
-### **Required Software**
+### Required Software
 1. **Java Development Kit (JDK) 17 or higher**
    - Download from: [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/)
    - Verify installation: `java -version` and `javac -version`
@@ -127,22 +127,22 @@ Before setting up the project, ensure you have the following installed on your s
 4. **Git** (for version control)
    - Download from: [Git Downloads](https://git-scm.com/downloads)
 
-### **Optional but Recommended**
+### Optional but Recommended
 - **IDE**: IntelliJ IDEA, Eclipse, or VS Code with Java extensions
 - **Database Tool**: SQL Server Management Studio (SSMS) or Azure Data Studio
 - **Email Account**: Gmail or any SMTP-enabled email for testing notifications
 
 ## 🌍 Environment Setup
 
-### **1. Set Java Environment Variables**
+### 1. Set Java Environment Variables
 
 **Windows:**
-```bash
+```powershell
 # Add to System PATH
-C:\Program Files\Java\jdk-17\bin
+$env:PATH += ";C:\Program Files\Java\jdk-17\bin"
 
 # Set JAVA_HOME
-JAVA_HOME=C:\Program Files\Java\jdk-17
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
 ```
 
 **macOS/Linux:**
@@ -152,17 +152,19 @@ export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
-### **2. Configure JavaFX**
+### 2. Configure JavaFX
 Create an environment variable for JavaFX:
-```bash
+```powershell
 # Windows
-JAVAFX_HOME=C:\javafx-sdk-19
+$env:JAVAFX_HOME = "C:\javafx-sdk-19"
+```
 
+```bash
 # macOS/Linux
 export JAVAFX_HOME=/path/to/javafx-sdk-19
 ```
 
-### **3. SQL Server Configuration**
+### 3. SQL Server Configuration
 1. **Start SQL Server Service**
 2. **Enable SQL Server Authentication** (if not already enabled)
 3. **Create a dedicated database user** (recommended for security)
@@ -170,7 +172,7 @@ export JAVAFX_HOME=/path/to/javafx-sdk-19
 
 ## 🚀 Installation Guide
 
-### **Step 1: Clone the Repository**
+### Step 1: Clone the Repository
 ```bash
 # Clone the project
 git clone https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System.git
@@ -179,7 +181,7 @@ git clone https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System.
 cd EduVault_Student_Management_System
 ```
 
-### **Step 2: Verify Project Structure**
+### Step 2: Verify Project Structure
 Ensure your project has the following structure:
 ```
 EduVault_Student_Management_System/
@@ -195,7 +197,7 @@ EduVault_Student_Management_System/
 └── README.md
 ```
 
-### **Step 3: Check Dependencies**
+### Step 3: Check Dependencies
 Verify that all JAR files are present in the `lib/` directory:
 - `javafx-base.jar`
 - `javafx-controls.jar`
@@ -206,7 +208,7 @@ Verify that all JAR files are present in the `lib/` directory:
 
 ## 🗄️ Database Setup
 
-### **Step 1: Create Database**
+### Step 1: Create Database
 1. **Open SQL Server Management Studio (SSMS)**
 2. **Connect to your SQL Server instance**
 3. **Create a new database:**
@@ -214,12 +216,12 @@ Verify that all JAR files are present in the `lib/` directory:
 CREATE DATABASE EduVault_DB;
 ```
 
-### **Step 2: Execute Database Script**
-1. **Open the SQL script**: `src/sql/COMPLETE_ACADEMIC_SYSTEM.sql`
+### Step 2: Execute Database Script
+1. **Open the SQL script**: `src/sql/copy.sql`
 2. **Execute the script** in SSMS against the `EduVault_DB` database
 3. **Verify tables creation**: Ensure all tables are created successfully
 
-### **Step 3: Configure Database Connection**
+### Step 3: Configure Database Connection
 Edit the file `src/util/DatabaseConnection.java`:
 
 ```java
@@ -242,7 +244,7 @@ private static final String PASSWORD = "your_sql_password";
 "jdbc:sqlserver://your-server-ip:1433;databaseName=EduVault_DB;encrypt=true;trustServerCertificate=true"
 ```
 
-### **Step 4: Test Database Connection**
+### Step 4: Test Database Connection
 Create a simple test to verify connectivity:
 ```java
 // Test in DatabaseConnection.java main method
@@ -261,30 +263,32 @@ public static void main(String[] args) {
 
 ## ▶️ Running the Project
 
-### **Method 1: Command Line Compilation and Execution**
+### Method 1: Command Line Compilation and Execution
 
 **Step 1: Compile the Project**
-```bash
+```powershell
 # Navigate to project root directory
-cd /path/to/EduVault_Student_Management_System
+cd D:\Project\SE_EduVault\SE_Pushpo
 
 # Create bin directory if it doesn't exist
-mkdir bin
+mkdir bin -Force
 
 # Compile all Java files
 javac -cp "lib/*" -d bin src/applications/*.java src/controllers/*.java src/model/*.java src/dao/*.java src/util/*.java
 ```
 
 **Step 2: Run the Application**
-```bash
-# Run the main application
+```powershell
+# Run the main application (Windows)
 java -cp "bin;lib/*" applications.Main
+```
 
+```bash
 # For macOS/Linux (use colon instead of semicolon)
 java -cp "bin:lib/*" applications.Main
 ```
 
-### **Method 2: Using an IDE**
+### Method 2: Using an IDE
 
 **IntelliJ IDEA:**
 1. **Open Project**: File → Open → Select project directory
@@ -304,7 +308,7 @@ java -cp "bin:lib/*" applications.Main
 3. **Configure Classpath**: Add `lib/*` to classpath in `.vscode/settings.json`
 4. **Run**: Press F5 or use Run and Debug panel
 
-### **Method 3: Batch/Shell Scripts**
+### Method 3: Batch/Shell Scripts
 
 **Windows (compile.bat):**
 ```batch
@@ -340,16 +344,16 @@ java -cp "bin:lib/*" applications.Main
 
 ## 👥 User Guide
 
-### **Default Login Credentials**
+### Default Login Credentials
 For testing purposes, use these default credentials:
 
-| **Role** | **Username** | **Password** | **Description** |
-|----------|--------------|--------------|-----------------|
+| Role | Username | Password | Description |
+|------|----------|----------|-------------|
 | Administrator | `admin` | `admin123` | Full system access |
 | Faculty | `faculty` | `faculty123` | Course and grade management |
 | Student | `student` | `student123` | Academic records and enrollment |
 
-### **Administrator Workflow**
+### Administrator Workflow
 1. **Login** with admin credentials
 2. **User Management**:
    - Create new faculty accounts
@@ -364,7 +368,7 @@ For testing purposes, use these default credentials:
    - View academic performance statistics
    - Export data for analysis
 
-### **Faculty Workflow**
+### Faculty Workflow
 1. **Login** with faculty credentials
 2. **Course Management**:
    - View assigned courses
@@ -379,7 +383,7 @@ For testing purposes, use these default credentials:
    - Monitor academic performance
    - Generate progress reports
 
-### **Student Workflow**
+### Student Workflow
 1. **Login** with student credentials
 2. **Academic Records**:
    - View current grades
@@ -410,22 +414,28 @@ EduVault_Student_Management_System/
 │   │   ├── User.java                 # Base user model
 │   │   ├── Student.java              # Student entity
 │   │   ├── Faculty.java              # Faculty entity
-│   │   ├── Course.java               # Course entity
-│   │   ├── Assessment.java           # Assessment/grade entity
-│   │   └── Enrollment.java           # Enrollment relationship
+│   │   └── Course.java               # Course entity
 │   ├── 📂 dao/                       # Data Access Objects
 │   │   ├── UserDAO.java              # User database operations
-│   │   ├── StudentDAO.java           # Student database operations
-│   │   ├── FacultyDAO.java           # Faculty database operations
-│   │   ├── CourseDAO.java            # Course database operations
-│   │   └── AssessmentDAO.java        # Assessment database operations
+│   │   ├── SimpleStudentDAO.java     # Student database operations
+│   │   ├── SimpleFacultyDAO.java     # Faculty database operations
+│   │   ├── SimpleCourseDAO.java      # Course database operations
+│   │   ├── AssessmentDAO.java        # Assessment database operations
+│   │   └── AttendanceDAO.java        # Attendance database operations
 │   ├── 📂 util/                      # Utility classes
 │   │   ├── DatabaseConnection.java   # Database connection management
 │   │   ├── EmailService.java         # Email notification service
-│   │   └── PasswordUtil.java         # Password encryption utilities
+│   │   ├── GradeCalculationService.java # Grade calculation utilities
+│   │   └── ReportGenerationService.java # Report generation utilities
+│   ├── 📂 fxml/                      # FXML layout files
+│   │   ├── Login.fxml                # Login interface
+│   │   ├── AdminDashboard.fxml       # Admin dashboard
+│   │   ├── FacultyDashboard.fxml     # Faculty dashboard
+│   │   └── StudentDashboard.fxml     # Student dashboard
+│   ├── 📂 css/                       # Stylesheet files
+│   │   └── faculty_dashboard.css     # Faculty dashboard styling
 │   └── 📂 sql/                       # Database scripts
-│       ├── COMPLETE_ACADEMIC_SYSTEM.sql  # Full database schema
-│       └── sample_data.sql           # Sample data for testing
+│       └── copy.sql                  # Database schema and sample data
 ├── 📂 lib/                           # External libraries
 │   ├── javafx-base.jar
 │   ├── javafx-controls.jar
@@ -437,24 +447,20 @@ EduVault_Student_Management_System/
 │   ├── mssql-jdbc-12.8.1.jre8.jar
 │   └── javax.mail.jar
 ├── 📂 bin/                           # Compiled class files (auto-generated)
-├── 📂 docs/                          # Documentation (to be added)
-│   ├── SOFTWARE_ENGINEERING_PROJECT_REPORT.md
-│   ├── USE_CASE_MODELS.md
-│   └── UML_DIAGRAMS/
-├── 📂 resources/                     # Application resources
-│   ├── images/                       # UI images and icons
-│   └── fxml/                         # FXML layout files (if used)
+├── 📂 Image/                         # Documentation images and diagrams
+├── 📂 Report/                        # Project reports and documentation
 ├── 📄 README.md                      # This file
 ├── 📄 LICENSE                        # Project license
 ├── 📄 .gitignore                     # Git ignore rules
-└── 📄 CHANGELOG.md                   # Version history
+├── 📄 CHANGELOG.md                   # Version history
+└── 📄 CONTRIBUTING.md                # Contribution guidelines
 ```
 
-### **Key Architectural Components**
+### Key Architectural Components
 
 **MVC Architecture:**
 - **Model**: Data entities representing real-world objects (Student, Faculty, Course)
-- **View**: JavaFX user interface components
+- **View**: JavaFX user interface components and FXML files
 - **Controller**: Business logic and user interaction handling
 
 **Data Access Layer:**
@@ -464,14 +470,14 @@ EduVault_Student_Management_System/
 
 **Service Layer:**
 - **Email Service**: Handles all email notifications
-- **Security Utilities**: Password encryption and session management
-- **Validation Services**: Input validation and business rule enforcement
+- **Grade Calculation**: Automated grade calculations and GPA computation
+- **Report Generation**: Creates various reports and transcripts
 
 ## 🤝 Contributing
 
 We welcome contributions from developers of all skill levels! Here's how you can contribute to EduVault:
 
-### **Getting Started**
+### Getting Started
 1. **Fork the Repository**
    ```bash
    # Click "Fork" on GitHub, then clone your fork
@@ -490,7 +496,7 @@ We welcome contributions from developers of all skill levels! Here's how you can
    git checkout -b feature/your-feature-name
    ```
 
-### **Development Guidelines**
+### Development Guidelines
 
 **Code Style:**
 - **Java Naming Conventions**: Use camelCase for variables/methods, PascalCase for classes
@@ -508,50 +514,18 @@ We welcome contributions from developers of all skill levels! Here's how you can
  */
 public Student getStudentById(String studentId) throws SQLException {
     String query = "SELECT * FROM Students WHERE student_id = ?";
-    // Implementation here
+    try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        stmt.setString(1, studentId);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return mapResultSetToStudent(rs);
+        }
+    }
+    return null;
 }
 ```
 
-**Database Guidelines:**
-- **Always use prepared statements** to prevent SQL injection
-- **Include transaction management** for multi-table operations
-- **Handle exceptions properly** with meaningful error messages
-- **Close resources** in finally blocks or use try-with-resources
-
-**UI Guidelines:**
-- **Consistent styling** across all JavaFX components
-- **Responsive design** that works on different screen sizes
-- **User-friendly error messages** and validation feedback
-- **Keyboard navigation support** for accessibility
-
-### **Types of Contributions**
-
-**🐛 Bug Fixes**
-- Fix existing functionality issues
-- Improve error handling
-- Resolve performance problems
-
-**✨ New Features**
-- Add new functionality
-- Enhance existing features
-- Improve user experience
-
-**📚 Documentation**
-- Improve code comments
-- Update README or guides
-- Add API documentation
-
-**🧪 Testing**
-- Add unit tests
-- Create integration tests
-- Improve test coverage
-
-**🎨 UI/UX Improvements**
-- Enhance user interface design
-- Improve accessibility
-- Add new themes or styling
-
-### **Pull Request Process**
+### Pull Request Process
 
 1. **Update Documentation**
    - Update README.md if needed
@@ -587,157 +561,63 @@ public Student getStudentById(String studentId) throws SQLException {
    # Go to GitHub and create a Pull Request
    ```
 
-5. **Pull Request Template**
-   ```markdown
-   ## Description
-   Brief description of what this PR does
-   
-   ## Type of Change
-   - [ ] Bug fix
-   - [ ] New feature
-   - [ ] Documentation update
-   - [ ] Performance improvement
-   
-   ## Testing
-   - [ ] All existing tests pass
-   - [ ] New tests added for new functionality
-   - [ ] Manual testing completed
-   
-   ## Screenshots (if applicable)
-   Add screenshots of UI changes
-   
-   ## Checklist
-   - [ ] Code follows project style guidelines
-   - [ ] Self-review completed
-   - [ ] Documentation updated
-   - [ ] No merge conflicts
-   ```
-
-### **Code Review Process**
-- All submissions require review before merging
-- Reviewers will check for code quality, functionality, and adherence to guidelines
-- Address feedback promptly and professionally
-- Be open to suggestions and improvements
-
 ## 🔧 Troubleshooting
 
-### **Common Issues and Solutions**
+### Common Issues and Solutions
 
-#### **1. Compilation Errors**
+#### 1. Compilation Errors
 
 **Problem**: `error: package javafx.application does not exist`
-```
-Solution:
+**Solution:**
 - Verify JavaFX is installed and properly configured
 - Check JAVAFX_HOME environment variable
 - Ensure JavaFX JARs are in the lib/ directory
 - Use proper classpath in compilation command
-```
 
 **Problem**: `error: package java.sql does not exist`
-```
-Solution:
+**Solution:**
 - Verify JDK version (should be 8 or higher)
 - Check JAVA_HOME environment variable
 - Ensure mssql-jdbc JAR is in classpath
-```
 
-#### **2. Database Connection Issues**
+#### 2. Database Connection Issues
 
 **Problem**: `SQLException: Login failed for user`
-```
-Solution:
+**Solution:**
 1. Verify SQL Server is running
 2. Check username/password in DatabaseConnection.java
 3. Ensure SQL Server Authentication is enabled
 4. Verify database name exists
 5. Check firewall settings for SQL Server port (1433)
-```
 
 **Problem**: `SQLException: The TCP/IP connection to the host has failed`
-```
-Solution:
+**Solution:**
 1. Enable TCP/IP protocol in SQL Server Configuration Manager
 2. Restart SQL Server service
 3. Check if SQL Server Browser service is running
 4. Verify connection string format
-```
 
-#### **3. Runtime Errors**
+#### 3. Runtime Errors
 
 **Problem**: `NoClassDefFoundError` at runtime
-```
-Solution:
+**Solution:**
 1. Verify all JAR files are in lib/ directory
 2. Check classpath includes all required libraries
 3. Ensure bin/ directory contains compiled classes
 4. Recompile the entire project
-```
 
 **Problem**: Email notifications not working
-```
-Solution:
+**Solution:**
 1. Check email configuration in EmailService.java
 2. Verify SMTP settings (Gmail: smtp.gmail.com:587)
 3. For Gmail, enable "Less secure app access" or use App Passwords
 4. Check firewall settings for SMTP ports
-```
-
-#### **4. Performance Issues**
-
-**Problem**: Slow database queries
-```
-Solution:
-1. Check database indexes on frequently queried columns
-2. Optimize SQL queries in DAO classes
-3. Implement connection pooling
-4. Monitor SQL Server performance
-```
-
-**Problem**: UI freezing during operations
-```
-Solution:
-1. Move long-running operations to background threads
-2. Use JavaFX Task and Platform.runLater()
-3. Implement progress indicators
-4. Optimize database operations
-```
-
-### **Debug Mode**
-To enable debug mode for troubleshooting:
-
-```java
-// Add to Main.java
-public static void main(String[] args) {
-    // Enable debug logging
-    System.setProperty("java.util.logging.config.file", "logging.properties");
-    
-    // Your existing code
-    launch(args);
-}
-```
-
-### **Logging Configuration**
-Create `logging.properties` for detailed logging:
-```properties
-# Global logging level
-.level = INFO
-
-# Console handler
-java.util.logging.ConsoleHandler.level = ALL
-java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
-
-# File handler
-java.util.logging.FileHandler.level = ALL
-java.util.logging.FileHandler.pattern = logs/eduvault_%g.log
-java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
-```
 
 ## 🚀 Future Enhancements
 
-### **Planned Features (Roadmap)**
+### Planned Features (Roadmap)
 
-#### **Phase 1: Core Improvements**
+#### Phase 1: Core Improvements
 - [ ] **Enhanced Security**
   - Two-factor authentication (2FA)
   - Password complexity requirements
@@ -750,7 +630,7 @@ java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
   - Responsive design for different screen sizes
   - Accessibility improvements (screen reader support)
 
-#### **Phase 2: Advanced Features**
+#### Phase 2: Advanced Features
 - [ ] **Reporting and Analytics**
   - Advanced reporting dashboard
   - Data visualization charts
@@ -763,7 +643,7 @@ java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
   - Calendar integration
   - Mobile app notifications
 
-#### **Phase 3: Integration and Scalability**
+#### Phase 3: Integration and Scalability
 - [ ] **External Integrations**
   - Learning Management System (LMS) integration
   - Payment gateway for fee management
@@ -776,41 +656,24 @@ java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
   - Cloud deployment options
   - Real-time synchronization
 
-### **Technology Upgrades**
-- **Migration to Spring Boot** for better enterprise features
-- **REST API development** for mobile app integration
-- **Microservices architecture** for better scalability
-- **Docker containerization** for easier deployment
-
-### **Contributing to Future Features**
-If you're interested in working on any of these features:
-1. **Create an issue** on GitHub describing the feature
-2. **Discuss the implementation** with maintainers
-3. **Follow the contribution guidelines** above
-4. **Submit a pull request** with your implementation
-
 ## 📞 Support and Contact
 
-### **Getting Help**
+### Getting Help
 - **GitHub Issues**: [Create an issue](https://github.com/Kawchar-Ahammed/EduVault_Student_Management_System/issues) for bugs or feature requests
 - **Discussions**: Use GitHub Discussions for questions and community support
 - **Documentation**: Check this README and inline code documentation
 
-### **Project Maintainer**
+### Project Maintainer
 **Kawchar Ahammed**
 - **GitHub**: [@Kawchar-Ahammed](https://github.com/Kawchar-Ahammed)
-- **Email**: kawchar.cse@example.com
+- **Email**: Contact via GitHub
 - **LinkedIn**: [Kawchar Ahammed](https://linkedin.com/in/kawchar-ahammed)
-
-### **Community**
-- **Discord**: [EduVault Community](https://discord.gg/eduvault) (Coming Soon)
-- **Slack**: [EduVault Workspace](https://eduvault.slack.com) (Coming Soon)
 
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### **What this means:**
+### What this means:
 - ✅ **Commercial use** - You can use this project for commercial purposes
 - ✅ **Modification** - You can modify and adapt the code
 - ✅ **Distribution** - You can distribute the original or modified code
@@ -837,8 +700,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 *Last updated: September 2025*
 
 </div>
-#   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m 
- 
- #   E d u V a u l t _ S t u d e n t _ M a n a g e m e n t _ S y s t e m 
- 
- 
